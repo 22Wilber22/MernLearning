@@ -3,6 +3,7 @@ const express = require('express');
 const cors = require('cors');
 const morgan = require('morgan');
 const passport = require('passport');
+const rateLimit = require('express-rate-limit');
 const connectDB = require('./config/database');
 
 require('./config/passport');
@@ -27,12 +28,24 @@ app.use(express.json({ limit: '10mb' }));
 app.use(express.urlencoded({ extended: true }));
 app.use(passport.initialize());
 
-app.use('/api/auth', authRoutes);
-app.use('/api/users', userRoutes);
-app.use('/api/modules', moduleRoutes);
-app.use('/api/lessons', lessonRoutes);
-app.use('/api/exercises', exerciseRoutes);
-app.use('/api/ai', aiRoutes);
+const authLimiter = rateLimit({
+  windowMs: 15 * 60 * 1000,
+  max: 30,
+  message: { success: false, message: 'Too many requests, please try again later.' }
+});
+
+const apiLimiter = rateLimit({
+  windowMs: 15 * 60 * 1000,
+  max: 200,
+  message: { success: false, message: 'Too many requests, please try again later.' }
+});
+
+app.use('/api/auth', authLimiter, authRoutes);
+app.use('/api/users', apiLimiter, userRoutes);
+app.use('/api/modules', apiLimiter, moduleRoutes);
+app.use('/api/lessons', apiLimiter, lessonRoutes);
+app.use('/api/exercises', apiLimiter, exerciseRoutes);
+app.use('/api/ai', apiLimiter, aiRoutes);
 
 app.get('/api/health', (req, res) => {
   res.json({ status: 'ok', timestamp: new Date().toISOString() });
