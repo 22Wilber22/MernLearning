@@ -46,6 +46,17 @@ cd frontend && npm install && npm start
 **Backend:** Node.js, Express, MongoDB, Mongoose, JWT, Passport.js, Google Gemini  
 **Frontend:** React 18, TypeScript, Monaco Editor, React Router v6, Axios
 
+## 📊 Estado del Proyecto
+
+| Componente | Estado |
+|-----------|--------|
+| Estructura profesional | ✅ Integrada en `main` (PR #3) |
+| Backend Node.js/Express | ✅ Operativo |
+| Frontend React/TypeScript | ✅ Operativo |
+| CI (lint + type-check + build) | ✅ Pasando |
+| Docker Compose | ✅ Configurado |
+| Documentación | ✅ Disponible en `/docs` |
+
 ## 📄 Documentación
 
 - [Guía de configuración](docs/SETUP.md)
