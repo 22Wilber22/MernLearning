@@ -20,12 +20,16 @@ const Navbar: React.FC = () => {
         {user ? (
           <>
             <Link to="/dashboard">Dashboard</Link>
+            <Link to="/profile" style={{ color: 'var(--text-secondary)' }}>
+              {user.name}
+            </Link>
             <span style={{ color: 'var(--text-secondary)' }}>
               ⚡ {user.xp} XP
             </span>
             <Link to="/profile" style={{ color: 'var(--text-secondary)' }}>
               {user.name}
             </Link>
+
             <button className="btn btn-secondary" onClick={handleLogout}>
               Salir
             </button>
