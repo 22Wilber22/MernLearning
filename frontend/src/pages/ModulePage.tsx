@@ -9,14 +9,16 @@ const ModulePage: React.FC = () => {
   const navigate = useNavigate();
   const [module, setModule] = useState<Module | null>(null);
   const [loading, setLoading] = useState(true);
+  const [error, setError] = useState('');
 
   useEffect(() => {
     api.get(`/modules/${slug}`).then(res => {
       setModule(res.data.data);
-    }).catch(console.error).finally(() => setLoading(false));
+    }).catch(() => setError('No se pudo cargar el módulo. Inténtalo de nuevo.')).finally(() => setLoading(false));
   }, [slug]);
 
   if (loading) return <><Navbar /><div className="loading-screen"><div className="spinner"></div></div></>;
+  if (error) return <><Navbar /><div style={{ padding: '2rem', textAlign: 'center', color: 'var(--danger)' }}>⚠️ {error}</div></>;
   if (!module) return <><Navbar /><div style={{ padding: '2rem', textAlign: 'center' }}>Módulo no encontrado</div></>;
 
   const totalExercises = module.lessons.reduce((acc, l) => acc + (l.exercises?.length || 0), 0);

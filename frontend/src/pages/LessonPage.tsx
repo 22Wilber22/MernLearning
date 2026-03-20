@@ -12,11 +12,12 @@ const LessonPage: React.FC = () => {
   const [activeTab, setActiveTab] = useState<'content' | 'exercises'>('content');
   const [loading, setLoading] = useState(true);
   const [completed, setCompleted] = useState(false);
+  const [error, setError] = useState('');
 
   useEffect(() => {
     api.get(`/lessons/${id}`).then(res => {
       setLesson(res.data.data);
-    }).catch(console.error).finally(() => setLoading(false));
+    }).catch(() => setError('No se pudo cargar la lección. Inténtalo de nuevo.')).finally(() => setLoading(false));
   }, [id]);
 
   const handleComplete = () => {
@@ -38,6 +39,7 @@ const LessonPage: React.FC = () => {
   };
 
   if (loading) return <><Navbar /><div className="loading-screen"><div className="spinner"></div></div></>;
+  if (error) return <><Navbar /><div style={{ padding: '2rem', textAlign: 'center', color: 'var(--danger)' }}>⚠️ {error}</div></>;
   if (!lesson) return <><Navbar /><div style={{ padding: '2rem', textAlign: 'center' }}>Lección no encontrada</div></>;
 
   return (

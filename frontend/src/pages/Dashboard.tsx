@@ -9,11 +9,12 @@ const Dashboard: React.FC = () => {
   const { user } = useAuth();
   const [modules, setModules] = useState<Module[]>([]);
   const [loading, setLoading] = useState(true);
+  const [error, setError] = useState('');
 
   useEffect(() => {
     api.get('/modules').then(res => {
       setModules(res.data.data);
-    }).catch(console.error).finally(() => setLoading(false));
+    }).catch(() => setError('No se pudieron cargar los módulos. Inténtalo de nuevo.')).finally(() => setLoading(false));
   }, []);
 
   const getModuleProgress = (moduleId: string): number => {
@@ -54,6 +55,10 @@ const Dashboard: React.FC = () => {
           <div style={{ textAlign: 'center', padding: '3rem', color: 'var(--text-secondary)' }}>
             <div className="spinner" style={{ margin: '0 auto' }}></div>
             <p style={{ marginTop: '1rem' }}>Cargando módulos...</p>
+          </div>
+        ) : error ? (
+          <div style={{ textAlign: 'center', padding: '3rem', color: 'var(--danger)' }}>
+            ⚠️ {error}
           </div>
         ) : (
           <div className="modules-grid">
