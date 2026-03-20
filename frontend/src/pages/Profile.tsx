@@ -58,7 +58,7 @@ const Profile: React.FC = () => {
           </div>
           <h2 style={{ marginBottom: '0.25rem' }}>{user.name}</h2>
           <p style={{ color: 'var(--text-secondary)', marginBottom: '1rem' }}>
-            {(user as any).email}
+            {user.email}
           </p>
           <div
             style={{

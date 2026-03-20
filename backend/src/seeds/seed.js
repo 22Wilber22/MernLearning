@@ -182,7 +182,7 @@ const seedData = async () => {
     title: 'Calculadora con funciones',
     description: 'Crea funciones para operaciones matemáticas básicas',
     instructions: 'Crea cuatro arrow functions: sumar, restar, multiplicar y dividir, cada una con dos parámetros. Luego crea una función "calcular" que reciba dos números y un operador (+, -, *, /) y retorne el resultado usando las funciones anteriores.',
-    starterCode: '// Crea las arrow functions aquí\n\n// Función calcular\n\nconsole.log(calcular(10, 5, \'+')); // 15\nconsole.log(calcular(10, 5, \'-\')); // 5\nconsole.log(calcular(10, 5, \'*\')); // 50\nconsole.log(calcular(10, 5, \'/\')); // 2\n',
+    starterCode: "// Crea las arrow functions aquí\n\n// Función calcular\n\nconsole.log(calcular(10, 5, '+')); // 15\nconsole.log(calcular(10, 5, '-')); // 5\nconsole.log(calcular(10, 5, '*')); // 50\nconsole.log(calcular(10, 5, '/')); // 2\n",
     solutionCode: "const sumar = (a, b) => a + b;\nconst restar = (a, b) => a - b;\nconst multiplicar = (a, b) => a * b;\nconst dividir = (a, b) => a / b;\n\nconst calcular = (a, b, operador) => {\n  if (operador === '+') return sumar(a, b);\n  if (operador === '-') return restar(a, b);\n  if (operador === '*') return multiplicar(a, b);\n  if (operador === '/') return dividir(a, b);\n};\n\nconsole.log(calcular(10, 5, '+'));\nconsole.log(calcular(10, 5, '-'));\nconsole.log(calcular(10, 5, '*'));\nconsole.log(calcular(10, 5, '/'));",
     language: 'javascript',
     difficulty: 'beginner',
