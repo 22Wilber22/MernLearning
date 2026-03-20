@@ -10,8 +10,8 @@ exports.errorResponse = (res, message, statusCode = 500) => {
   return res.status(statusCode).json({ success: false, message });
 };
 
-exports.paginatedResponse = (res, data, total, page, limit) => {
-  return res.json({
+exports.paginatedResponse = (res, data, total, page, limit, statusCode = 200) => {
+  return res.status(statusCode).json({
     success: true,
     data,
     pagination: {

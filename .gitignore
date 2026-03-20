@@ -9,4 +9,3 @@ npm-debug.log*
 .DS_Store
 coverage/
 .nyc_output/
-package-lock.json
