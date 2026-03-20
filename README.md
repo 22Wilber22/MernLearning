@@ -51,6 +51,7 @@ cd frontend && npm install && npm start
 | Componente | Estado |
 |-----------|--------|
 | Estructura profesional | ✅ Integrada en `main` (PR #3) |
+| Perfil de usuario | ✅ Disponible en `/profile` |
 | Backend Node.js/Express | ✅ Operativo |
 | Frontend React/TypeScript | ✅ Operativo |
 | CI (lint + type-check + build) | ✅ Pasando |
