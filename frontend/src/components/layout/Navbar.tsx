@@ -23,9 +23,9 @@ const Navbar: React.FC = () => {
             <span style={{ color: 'var(--text-secondary)' }}>
               ⚡ {user.xp} XP
             </span>
-            <span style={{ color: 'var(--text-secondary)' }}>
+            <Link to="/profile" style={{ color: 'var(--text-secondary)' }}>
               {user.name}
-            </span>
+            </Link>
             <button className="btn btn-secondary" onClick={handleLogout}>
               Salir
             </button>
