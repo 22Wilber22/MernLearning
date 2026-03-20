@@ -1,5 +1,8 @@
 # 🚀 MernLearning
 
+[![CI](https://github.com/22Wilber22/MernLearning/actions/workflows/ci.yml/badge.svg)](https://github.com/22Wilber22/MernLearning/actions/workflows/ci.yml)
+![Estructura profesional](https://img.shields.io/badge/estructura%20profesional-✅%20integrada-brightgreen)
+
 > Plataforma de aprendizaje MERN Stack con revisión automática de código por IA (Google Gemini)
 
 ## 📚 Descripción
